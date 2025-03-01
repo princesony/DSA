@@ -34,5 +34,22 @@ let selection_sort = (arr)=>{
         }
         return arr
 }
- let check_selection = selection_sort(data);
- console.log(check_selection);
+//  let check_selection = selection_sort(data);
+//  console.log(check_selection);
+
+
+let inseration_sort = (arr)=>{
+    let n = arr.length;
+    for (let i = 1; i < n; i++) {
+        let key = arr[i];
+        let j = i - 1;
+        while (j >= 0 && key < arr[j]) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+    return arr;
+}
+ let check_inseration = inseration_sort(data);
+ console.log(check_inseration);
