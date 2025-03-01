@@ -51,5 +51,62 @@ let inseration_sort = (arr)=>{
     }
     return arr;
 }
- let check_inseration = inseration_sort(data);
- console.log(check_inseration);
+//  let check_inseration = inseration_sort(data);
+//  console.log(check_inseration);
+
+
+let merge_sort = (arr) => {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let mid = Math.floor(arr.length / 2);
+    let left_half = arr.slice(0, mid);
+    let right_half = arr.slice(mid);
+    return merge(merge_sort(left_half), merge_sort(right_half));
+}
+
+let merge = (left, right) => {
+    let merged = [];
+    let left_index = 0;
+    let right_index = 0;
+
+    while (left_index < left.length && right_index < right.length) {
+        if (left[left_index] <= right[right_index]) {
+            merged.push(left[left_index]);
+            left_index++;
+        } else {
+            merged.push(right[right_index]);
+            right_index++;
+        }
+    }
+
+    // Add any remaining elements from left or right
+    merged = merged.concat(left.slice(left_index)).concat(right.slice(right_index));
+    return merged;  // Correct the return value here
+}
+
+
+// let check_merge = merge_sort(data);
+// console.log(check_merge);
+
+
+let quick_sort = (arr)=>{
+    if(arr.length<=1){
+        return arr;
+    }
+    let pivot = arr[Math.floor(arr.length/2)];
+    let left = [];
+    let right = [];
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]<pivot){
+            left.push(arr[i]);
+        }
+        else if(arr[i]>pivot){
+            right.push(arr[i]);
+        }
+    }
+    return quick_sort(left).concat([pivot],quick_sort(right));
+}
+
+ let check_quick = quick_sort(data);
+ console.log(check_quick);
